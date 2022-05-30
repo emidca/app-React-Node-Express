@@ -1,11 +1,14 @@
 import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom"
+import {BrowserRouter, Route, Routes} from "react-router-dom"
+import LandingPage from './components/LandingPage';
 
 function App() {  //browserrouter envuelve el div
   return (
-    <BrowserRouter> 
+    <BrowserRouter>
+    <Routes>
+    <Route path='/' element={<LandingPage/>}/>
+    </Routes>
     <div className="App">
-      <h1>Henry Countries</h1>
     </div>
     </BrowserRouter>
   );
