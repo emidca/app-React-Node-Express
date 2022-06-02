@@ -1,8 +1,8 @@
 import axios from "axios";
 export const GET_COUNTRIES = 'GET_COUNTRIES'; 
-export const BY_SEARCH = 'BY_SEARCH'; 
+export const GET_SEARCH = "GET_SEARCH";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
-export const FILTER_CREATED = 'FILTER_CREATED'; 
+export const FILTER_BY_ALFABETIC = "FILTER_BY_ALFABETIC"
 
 
 
@@ -24,12 +24,25 @@ export function filterCountriesByContinent(payload){
     }
 }
 
-export function filterCountriesCreated(payload){
-    return {
-        type: FILTER_CREATED,
+export function filtradoAlfabetic(payload) {
+    return{
+        type: FILTER_BY_ALFABETIC,
         payload
     }
 }
+
+export function getSearch(name) {
+    return async function (dispatch) {
+        try{
+        var json = await axios.get("http://localhost:3001/countries?name=" + name)
+        console.log(json.data)
+        return dispatch ({
+            type : GET_SEARCH,
+            payload : json.data
+        })
+        }catch(e){
+            console.log(e);
+}}}
 
 
 
