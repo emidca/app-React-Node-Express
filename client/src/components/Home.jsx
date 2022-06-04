@@ -48,7 +48,7 @@ export default function Home (){
                 <div>
                     <h1>Countries Page</h1>
                  
-                    <Link to="/countrie">Create Countrie</Link>
+                    <Link to="/activities">Create Activity</Link>
                 </div>
                 <div>
                 </div>
@@ -80,7 +80,7 @@ export default function Home (){
                     <div key={c.id}>
              <Card key={c.id} name={c.name} continents={c.continents} flags={c.flags}/>
                  </div>
-            )}): <h1>Error 404</h1>}
+            )}): <h1>error 404</h1>}
             
         </div>
             

@@ -1,4 +1,4 @@
-import { FILTER_BY_ALFABETIC, FILTER_BY_CONTINENT, GET_COUNTRIES, GET_SEARCH } from "../actions/index";
+import { FILTER_BY_ALFABETIC, FILTER_BY_CONTINENT, GET_ACTIVITIES, GET_COUNTRIES, GET_SEARCH, POST_ACTIVITIES } from "../actions/index";
 
 const initialState = {
   countries: [],
@@ -42,6 +42,13 @@ const rootReducer = (state = initialState, action) => {
 
         case GET_SEARCH:  
         return{...state, countries: [action.payload]}
+
+        case POST_ACTIVITIES:
+          return{...state,}
+
+        case GET_ACTIVITIES:
+          return{...state,
+          activities: action.payload}
         
         default:
           return {...state}
