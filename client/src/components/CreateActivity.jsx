@@ -1,13 +1,12 @@
 import React, {useState,useEffect} from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
-import { getActivietes, getCountries, postActivities} from "../actions";
+import { getCountries, postActivities} from "../actions";
 
 
 export default function CreateActivity() {
     const dispatch = useDispatch()
     const countries = useSelector((state => state.countries))
-
     const [input, setInput] = useState({
         name:"",
         difficulty:"",
@@ -16,24 +15,46 @@ export default function CreateActivity() {
         countryid:[]
     })
 
-    function hadleDifficulty(ev) {
+    function hadleSubmit(e) {
+        e.preventDefault()
+        dispatch(postActivities(input))
+        alert("CREATED!")
+        setInput({
+            name:"",
+            difficulty:"",
+            duration:"",
+            season:"",
+            countryid:[]
+        })
+    }
+    
+    function hadleDifficulty(e) {
         setInput({
             ...input,
-            dificultad: ev.target.value
+            difficulty: e.target.value
         })
     }
 
-    function hadleChange(ev){
-        setInput    ({
+    function hadleSelect(ev) {
+        setInput({
             ...input,
-            [ev.target.name] : ev.target.value
+            countryid: [...input.countryid, ev.target.value]
         })
     }
 
-    function hadleSeason(ev) {
+
+    function hadleChange(e){  // para imputs
         setInput({
             ...input,
-            temporada: ev.target.value
+            [e.target.name] : e.target.value
+        })
+        console.log(input)
+    }
+
+    function hadleSeason(e) {
+        setInput({
+            ...input,
+            season: e.target.value
         })
     }
   
@@ -41,18 +62,25 @@ export default function CreateActivity() {
         dispatch(getCountries())
     },[dispatch])
 
+    
+
     return (
         <div>
             <Link to="/home"><button>Home</button></Link>
             <h1>Create Activity !</h1>
-            <form>
+            <form onSubmit={(e)=>hadleSubmit(e)}>
                 <div>
-                    <label>Name:</label>
-                    <input type="text" value={input.name} name="name"></input>
+                    <label>Name:</label>                                                     
+                    <input type="text"
+                     value={input.name}
+                     name="name"
+                     onChange={hadleChange}
+                     ></input>
                 </div>
+
                 <div>
-                    <label onChange = {(e)=> hadleDifficulty(e)} >Difficulty:</label>
-                    <select>
+                    <label>Difficulty:</label>
+                    <select onChange={(ev) => hadleDifficulty(ev)}>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>
@@ -60,13 +88,20 @@ export default function CreateActivity() {
                     <option value='5'>5</option>
                     </select>
                 </div>
+
                 <div>
                     <label>Duration:</label>
-                    <input  type = 'string' value = {input.duration} name ='duration'></input>
+                    <input  
+                    type = 'string' 
+                    value = {input.duration} 
+                    name ='duration'
+                    onChange={hadleChange}
+                    ></input>
                 </div>
+
                 <div>
                     <label>Season:</label>
-                    <select>
+                    <select onChange={(ev) => hadleSeason(ev)}>
                     <option value ='Summer'>Summer</option>
                     <option value ='Winter'>Winter</option>
                     <option value='Autumn'>Autumn</option>
@@ -74,17 +109,24 @@ export default function CreateActivity() {
                     <option value='All'>All Year</option>
                     </select>
                 </div>
+
                 <label>Countrie:
-                    <select>
-                    {countries.map((ev)=>(
-                        <option value ={ev.id} >{ev.name} </option>
+                    <select onChange={(e) => hadleSelect(e)}>
+                    {countries.map((e)=>(
+                        <option value ={e.id} >{e.name} </option>
                     ))}
                 </select>
                 </label>
+                <div>       
+                <button type="submit">Submit</button>
+                </div> 
             </form>
 
+            {input.countryid.map(el=>
+                <div>
+                    <h6>{el}</h6>
+                    <button>x</button>
+                </div>)}
         </div>
     )
 }
-
-

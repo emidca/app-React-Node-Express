@@ -44,7 +44,7 @@ const rootReducer = (state = initialState, action) => {
         return{...state, countries: [action.payload]}
 
         case POST_ACTIVITIES:
-          return{...state,}
+          return{...state}
 
         case GET_ACTIVITIES:
           return{...state,
