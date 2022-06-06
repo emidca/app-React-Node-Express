@@ -24,7 +24,7 @@ const { conn } = require('./src/db.js');
 
 
 // Syncing all the models at once.
-conn.sync({ force: true })
+conn.sync({ force: false })
 .then(ApiData)
 .then(() => {
   server.listen(3001, () => {

@@ -7,7 +7,7 @@ const router = Router();
 //Configurar los routers
 
 router.use("/countries", countrieRoute);
-router.use("/activity", activityRoute);
+router.use("/activities", activityRoute);
 
 //router.use("/countries", RouteGetCountrie)
 

@@ -19,8 +19,7 @@ const getCountriesQuery =  async (req, res) => {
             if (!country){
                 res.status(404).json('Country not found')
             } else {
-                res.json(country)
-                console.log(country)
+                res.send(country)
             }
         } else {
             const countries = await Country.findAll({
