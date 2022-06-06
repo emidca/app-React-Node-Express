@@ -5,7 +5,8 @@ export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT"
 export const FILTER_BY_ALFABETIC = "FILTER_BY_ALFABETIC"
 export const POST_ACTIVITIES = "POST_ACTIVITIES"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
-
+export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY"
+export const FILTER_BY_POBLACION = "FILTER_BY_POBLACION"
 
 
 export function getCountries(){
@@ -45,8 +46,6 @@ export function getSearch(name) {
             console.log(e);
 }}}
 
-
-
 export function postActivities(payload) {
     return async function (dispatch) {
         var json = await axios.post("http://localhost:3001/activities", payload);
@@ -55,7 +54,7 @@ export function postActivities(payload) {
             payload : json
 })}}
 
-export function getActivietes() {
+export function getActivities() {
     return async function (dispatch) {
         var json = await axios.get("http://localhost:3001/activities");
         return dispatch({
@@ -63,7 +62,17 @@ export function getActivietes() {
             payload: json.data
 })}}
 
+export function filterActivities(payload) {
+    return{
+        type: FILTER_BY_ACTIVITY,
+        payload
+}}
 
+export function filterByPoblation(payload) {
+    return{
+        type: FILTER_BY_POBLACION,
+        payload
+}}
 
 
 

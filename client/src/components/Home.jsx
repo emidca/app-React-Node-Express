@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { getCountries,filterCountriesByContinent, filtradoAlfabetic } from "../actions/index";
+import { getCountries,filterCountriesByContinent, filtradoAlfabetic, filterActivities, filterByPoblation} from "../actions/index";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Pagination from "./Pagination";
@@ -11,11 +11,13 @@ export default function Home (){
     const countries = useSelector((state)=> state.countries)          // traigo el estado que quiero
     const [currentPage, setcurrentPage] = useState(1);                // se inicia en la primera pagina
     const [countriesPerPage] = useState(10);                         //cantidad de cards que se van a mostrar por pagina
-    const [,setOrden] = useState("")
+    const [,setOrder] = useState("")
     const lastCountry = currentPage * countriesPerPage;
     const firstCountry = lastCountry - countriesPerPage;
     const currentCountriesPage = countries.slice(firstCountry, lastCountry);
     const pagination = (pageNumber)=>{setcurrentPage(pageNumber)}
+
+ 
     
     useEffect(() =>{
         setcurrentPage(1)
@@ -34,14 +36,25 @@ export default function Home (){
         e.preventDefault();
         dispatch(filtradoAlfabetic(e.target.value))
         setcurrentPage(1)
-        setOrden(`Ordenado ${e.target.value}`)
+        setOrder(`Ordenado ${e.target.value}`)
+    }
+
+    function handleFiltradoPoblacion(ev){
+        ev.preventDefault();
+        dispatch(filterByPoblation(ev.target.value))
+        setcurrentPage(1);
+        setOrder(`Ordenado ${ev.target.value}`)
     }
   
     function handleFilterByContinent(e){
         dispatch(filterCountriesByContinent(e.target.value))
         setcurrentPage(1) // e.e
-        setOrden(`Ordenado ${e.target.value}`)
+        setOrder(`Ordenado ${e.target.value}`)
     }
+    function hadleActivities(e) {
+        dispatch(filterActivities(e.target.value))
+    }
+    
 
     return (
         <React.Fragment>
@@ -50,10 +63,14 @@ export default function Home (){
                  
                     <Link to="/activities">Create Activity</Link>
                 </div>
+     
                 <div>
                 </div>
+
                 <button onClick={e=>{handleClick(e)}}>Reload Countries</button>
+                
                 <div>
+
                  <select onChange={e => handleFilterByContinent(e)}>
                  <option value ='All'>All</option>
                  <option value='Americas'>Americas</option>
@@ -63,10 +80,17 @@ export default function Home (){
                  <option value='Europe'>Europe</option>
                  <option value='Oceania'>Oceania</option>
                  </select>
+
+                 <select onChange ={(ev) => handleFiltradoPoblacion(ev)}>
+                    <option value ='asc'>Mayor Poblacion</option>
+                    <option value ='desc'>Menor Poblacion</option>
+                    </select>
+
                  <select onChange={e => handleAlfa(e)}>
                      <option value="asc">Ascending</option>
                      <option value="desc">Descending</option>
                  </select>
+
                 </div>
                 <SearchBar/>
                 <Pagination
@@ -81,8 +105,8 @@ export default function Home (){
              <Card key={c.id} name={c.name} continents={c.continents} flags={c.flags}/>
                  </div>
             )}): <h1>error 404</h1>}
+            </div>
             
-        </div>
             
             </React.Fragment>
     )

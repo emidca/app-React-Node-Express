@@ -6,6 +6,7 @@ import { getCountries, postActivities} from "../actions";
 
 export default function CreateActivity() {
     const dispatch = useDispatch()
+    const [, setError] = useState({})
     const countries = useSelector((state => state.countries))
     const [input, setInput] = useState({
         name:"",
@@ -15,9 +16,28 @@ export default function CreateActivity() {
         countryid:[]
     })
 
+
+    function validate(input) {
+        if(!input.name){
+            alert("Se requiere un nombre") 
+        }else if(!input.difficulty){
+            alert ("Se requiere poner una dificultad")
+        }else if(!input.duration){
+           alert ("Poner hora o dias (ej: 9 horas)")
+        }else if(!input.season){
+           alert ("Se requiere una temporada")
+        }else if(input.countryid < 1){
+           alert ("Selecciona los paises en donde creaste tu actividad")
+        }
+    }
+
     function hadleSubmit(e) {
         e.preventDefault()
         dispatch(postActivities(input))
+        setError (validate({
+            ...input,
+            [e.target.value]: e.target.value
+        }))
         alert("CREATED!")
         setInput({
             name:"",
@@ -55,6 +75,13 @@ export default function CreateActivity() {
         setInput({
             ...input,
             season: e.target.value
+        })
+    }
+
+    function hadleDelete(ev) {
+        setInput({
+            ...input,
+            countryid: input.countryid.filter(el => el !== ev)
         })
     }
   
@@ -125,7 +152,7 @@ export default function CreateActivity() {
             {input.countryid.map(el=>
                 <div>
                     <h6>{el}</h6>
-                    <button>x</button>
+                    <button onClick={()=> hadleDelete(el)}>X</button>
                 </div>)}
         </div>
     )
