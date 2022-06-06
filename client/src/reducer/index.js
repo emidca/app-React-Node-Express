@@ -1,4 +1,4 @@
-import { FILTER_BY_ACTIVITY, FILTER_BY_ALFABETIC, FILTER_BY_CONTINENT, FILTER_BY_POBLACION, GET_ACTIVITIES, GET_COUNTRIES, GET_SEARCH, POST_ACTIVITIES } from "../actions/index";
+import { FILTER_BY_ACTIVITY, FILTER_BY_ALFABETIC, FILTER_BY_CONTINENT, FILTER_BY_POBLACION, GET_ACTIVITIES, GET_COUNTRIES, GET_DETAIL, GET_SEARCH, POST_ACTIVITIES } from "../actions/index";
 
 const initialState = {
   countries: [],
@@ -52,9 +52,10 @@ const rootReducer = (state = initialState, action) => {
 
         case FILTER_BY_ACTIVITY:
             const array = []
+            if(action.payload === 'All') return state;
              state.allCountries.map(el => el.activities.forEach(e => {
             if (e.name === action.payload) {
-                array.push(e)
+                array.push(el)
               }
             }))
             return{
@@ -66,6 +67,9 @@ const rootReducer = (state = initialState, action) => {
               const population = action.payload === 'desc' ? state.countries.sort((a,b) => a.population - b.population) :
                   state.countries.sort((a,b) => b.population - a.population)
                   return{...state,countries: population} 
+
+        case GET_DETAIL:
+                    return{...state, detail: action.payload}
         
         default:
           return {...state}

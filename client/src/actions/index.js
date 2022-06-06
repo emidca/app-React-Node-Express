@@ -7,6 +7,7 @@ export const POST_ACTIVITIES = "POST_ACTIVITIES"
 export const GET_ACTIVITIES = "GET_ACTIVITIES"
 export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY"
 export const FILTER_BY_POBLACION = "FILTER_BY_POBLACION"
+export const GET_DETAIL = "GET_DETAIL"
 
 
 export function getCountries(){
@@ -73,6 +74,18 @@ export function filterByPoblation(payload) {
         type: FILTER_BY_POBLACION,
         payload
 }}
+
+export function getDetail(id) {
+    return async function (dispatch) {
+        try{
+            var json = await axios.get("http://localhost:3001/countries/"+id)
+            return  dispatch({
+                type: GET_DETAIL,
+                payload : json.data
+            })
+        }catch(e){
+        console.log(e);
+}}}
 
 
 

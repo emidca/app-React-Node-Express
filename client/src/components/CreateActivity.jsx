@@ -13,7 +13,7 @@ export default function CreateActivity() {
         difficulty:"",
         duration:"",
         season:"",
-        countryid:[]
+        countries:[]
     })
 
 
@@ -26,7 +26,7 @@ export default function CreateActivity() {
            alert ("Poner hora o dias (ej: 9 horas)")
         }else if(!input.season){
            alert ("Se requiere una temporada")
-        }else if(input.countryid < 1){
+        }else if(input.countries < 1){
            alert ("Selecciona los paises en donde creaste tu actividad")
         }
     }
@@ -44,7 +44,7 @@ export default function CreateActivity() {
             difficulty:"",
             duration:"",
             season:"",
-            countryid:[]
+            countries:[]
         })
     }
     
@@ -58,7 +58,7 @@ export default function CreateActivity() {
     function hadleSelect(ev) {
         setInput({
             ...input,
-            countryid: [...input.countryid, ev.target.value]
+            countries: [...input.countries, ev.target.value]
         })
     }
 
@@ -81,7 +81,7 @@ export default function CreateActivity() {
     function hadleDelete(ev) {
         setInput({
             ...input,
-            countryid: input.countryid.filter(el => el !== ev)
+            countries: input.countries.filter(el => el !== ev)
         })
     }
   
@@ -108,11 +108,11 @@ export default function CreateActivity() {
                 <div>
                     <label>Difficulty:</label>
                     <select onChange={(ev) => hadleDifficulty(ev)}>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
                     </select>
                 </div>
 
@@ -149,7 +149,7 @@ export default function CreateActivity() {
                 </div> 
             </form>
 
-            {input.countryid.map(el=>
+            {input.countries.map(el=>
                 <div>
                     <h6>{el}</h6>
                     <button onClick={()=> hadleDelete(el)}>X</button>
