@@ -19,15 +19,15 @@ export default function CreateActivity() {
 
     function validate(input) {
         if(!input.name){
-            alert("Se requiere un nombre") 
+            alert("A name is required") 
         }else if(!input.difficulty){
-            alert ("Se requiere poner una dificultad")
+            alert ("Difficulty required")
         }else if(!input.duration){
-           alert ("Poner hora o dias (ej: 9 horas)")
+           alert ("Set time or days")
         }else if(!input.season){
-           alert ("Se requiere una temporada")
+           alert ("One season is required")
         }else if(input.countries < 1){
-           alert ("Selecciona los paises en donde creaste tu actividad")
+           alert ("Select the countries where you created your activity")
         }
     }
 

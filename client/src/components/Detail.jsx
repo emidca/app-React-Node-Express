@@ -18,7 +18,7 @@ return (
     <div>
         {
             country?
-            <div>
+            <div className="detailscontainer">
                 <h1>{country.name}</h1>
                 <img src = {country.flags} alt='Imagen no encontrada' width='250px' height='175px' />
                 <h2>Continente: {country.continents}</h2>

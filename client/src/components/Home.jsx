@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
+import "./Css-components/Card.css"
 
 export default function Home (){
     const dispatch = useDispatch();                                   // ejecuto dispatch en una variable
@@ -40,11 +41,11 @@ export default function Home (){
         setOrder(`Ordenado ${e.target.value}`)
     }
 
-    function handleFiltradoPoblacion(ev){
-        ev.preventDefault();
-        dispatch(filterByPoblation(ev.target.value))
+    function handleFiltradoPoblacion(e){
+        e.preventDefault();
+        dispatch(filterByPoblation(e.target.value))
         setcurrentPage(1);
-        setOrder(`Ordenado ${ev.target.value}`)
+        setOrder(`Ordenado ${e.target.value}`)
     }
   
     function handleFilterByContinent(e){
@@ -60,19 +61,24 @@ export default function Home (){
 
     return (
         <React.Fragment>
+             <nav className="nav">
+                    <div>
+                        <button className="reloadCountries">
+                    <Link className="link" to="/activities">Create Activity</Link>
+                    </button>
+                    </div>
                 <div>
-                    <h1>Countries Page</h1>
-                 
-                    <Link to="/activities">Create Activity</Link>
+                    <h1>COUNTRIES PAGE</h1>
                 </div>
-     
                 <div>
+                <button className="reloadCountries" onClick={e=>{handleClick(e)}}>Reload Countries</button>
                 </div>
+            </nav>
 
-                <button onClick={e=>{handleClick(e)}}>Reload Countries</button>
-                
+            <SearchBar/>
+<div className="maincontainer">
+            <div className="filtrados">
                 <div>
-
                  <select onChange={e => handleFilterByContinent(e)}>
                  <option value ='All'>All</option>
                  <option value='Americas'>Americas</option>
@@ -82,18 +88,26 @@ export default function Home (){
                  <option value='Europe'>Europe</option>
                  <option value='Oceania'>Oceania</option>
                  </select>
+                 </div>
 
-                 <select onChange ={(ev) => handleFiltradoPoblacion(ev)}>
+                <div>
+                 <select onChange ={(e) => handleFiltradoPoblacion(e)}>
                     <option value ='asc'>Mayor Poblacion</option>
                     <option value ='desc'>Menor Poblacion</option>
                     </select>
-
+                    </div>
+                <div>   
                  <select onChange={e => handleAlfa(e)}>
                      <option value="asc">Ascending</option>
                      <option value="desc">Descending</option>
                  </select>
-
                  <div >
+            </div>
+           
+                
+                
+
+
         {(activities.length === 0)? <p>Create activities to filter</p>
           : <select onChange = {e => hadleActivities(e)}>
           <option value = 'All'>Select activity</option>
@@ -103,27 +117,29 @@ export default function Home (){
           }
           </select>
         }
-      </div>
-
                 </div>
-                <SearchBar/>
-                <Pagination
-                countries = {countries.length}
-                countriesPerPage={countriesPerPage}
-                pagination={pagination}
-                />
-            <div>
+          </div>
+                
+            <div className="ContainerCards">
             {  currentCountriesPage.length ? currentCountriesPage.map(c => {
                 return(
                     <div key={c.id}>
-                        <Link to={`/home/${c.id}`}>
+                        <Link className="linkcard" to={`/home/${c.id}`}>
              <Card key={c.id} name={c.name} continents={c.continents} flags={c.flags}/>
                         </Link>
                  </div>
             )}): <h1>error 404</h1>}
             </div>
             
-            
+            <Pagination
+            countries = {countries.length}
+            countriesPerPage={countriesPerPage}
+            pagination={pagination}
+            />
+
+            </div> 
+    
+
             </React.Fragment>
     )
 }

@@ -1,4 +1,191 @@
-.Card {
+
+.ContainerCards  {
+    display: flex;
+    flex-wrap: wrap;
+    height: 75vh;
+    border: red solid 1px;
+    margin: 20px;
+    justify-content: space-around;
+
+}
+
+.flagimg{
+    width: 10vw;
+    height: 5vw;
+}
+
+
+.nav {
     display: flex;
     justify-content: space-around;
+    height: 80px;
+    background-color: rgb(11, 6, 29);
+    border-radius: 5px;
+    
+    
+
 }
+
+.nav h1 {
+    margin: 0 auto;
+    color: rgb(245, 245, 245);
+    margin-top: 20px;
+    
+
+}
+
+/* From uiverse.io by @alexroumi */
+.reloadCountries {
+    cursor:pointer;
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 15px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    margin-top: 10px;
+   }
+   
+   .reloadCountries::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: #212121;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   .reloadCountries:hover {
+    color: #e8e8e8;
+   }
+   
+   .reloadCountries:hover::before {
+    width: 100%;
+   }
+
+   .link {
+       text-decoration: none;
+       color: black
+   }
+
+   .link:hover {
+     color: white;
+
+   }
+
+
+   .filtrados{
+    display: flex;
+    float: left;
+    margin-top: 80px;
+    margin-left: 8vw;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+
+}
+
+.container {
+    border: rgb(21, 8, 194) solid 1px;
+}
+
+
+
+/* From uiverse.io by @alexruix */
+.card {
+    width: 190px;
+    height: 254px;
+    border-radius: 20px;
+    background: #f5f5f5;
+    position: relative;
+    padding: 1.8rem;
+    border: 2px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    padding: 10px;
+   }
+   
+   .card-details {
+    color: black;
+    height: 100%;
+    gap: .5em;
+    display: grid;
+    place-content: center;
+    margin: 1px;
+    height: 110px;
+    margin-top: 20px;
+
+   }
+
+   .card-details p {
+       margin: 1px;
+    
+       text-decoration: none;
+   }
+   
+   .card-button {
+    transform: translate(-50%, 125%);
+    width: 60%;
+    border-radius: 1rem;
+    border: none;
+    background-color: #008bf8;
+    color: #fff;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s ease-out;
+    cursor:pointer;
+   }
+   
+   .text-body {
+    color: rgb(134, 134, 134);
+   }
+   
+   /*Text*/
+   .text-title {
+    font-size: 1.5em;
+    font-weight: bold;
+   }
+   
+   /*Hover*/
+   .card:hover {
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+   }
+   
+   .card:hover .card-button {
+    transform: translate(-50%, 50%);
+    opacity: 1;
+   }
+
+
+   .maincontainer {
+       border: green solid 1px;
+      height: 88vh;
+   }
+
+   .linkcard {
+    text-decoration: none;
+   }
+
+
+  .card img {
+      height: 100px;
+  }
+
