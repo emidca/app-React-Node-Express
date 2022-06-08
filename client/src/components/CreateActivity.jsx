@@ -2,6 +2,7 @@ import React, {useState,useEffect} from "react";
 import { Link,  } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { getCountries, postActivities} from "../actions";
+import "./Css-components/CreateActivity.css"
 
 
 export default function CreateActivity() {
@@ -19,15 +20,15 @@ export default function CreateActivity() {
 
     function validate(input) {
         if(!input.name){
-            alert("A name is required") 
+            return alert("A name is required")
         }else if(!input.difficulty){
-            alert ("Difficulty required")
+            return alert ("Difficulty required")
         }else if(!input.duration){
-           alert ("Set time or days")
+           return alert ("Set time or days")
         }else if(!input.season){
-           alert ("One season is required")
+            return alert ("One season is required")
         }else if(input.countries < 1){
-           alert ("Select the countries where you created your activity")
+            return alert ("Select the countries where you created your activity")
         }
     }
 
@@ -93,20 +94,26 @@ export default function CreateActivity() {
 
     return (
         <div>
+
+            <br></br>
+            <br></br>
+            <br></br>
             <Link to="/home"><button>Home</button></Link>
-            <h1>Create Activity !</h1>
+            <div className="formactivity">
+            <h1 className="tittleactivitie">Create Activity !</h1>
             <form onSubmit={(e)=>hadleSubmit(e)}>
                 <div>
-                    <label>Name:</label>                                                     
+                    <label className="formtittles">Name:</label>                                                     
                     <input type="text"
                      value={input.name}
                      name="name"
                      onChange={hadleChange}
                      ></input>
                 </div>
+                <br></br>
 
                 <div>
-                    <label>Difficulty:</label>
+                    <label className="formtittles">Difficulty:</label>
                     <select onChange={(ev) => hadleDifficulty(ev)}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
@@ -115,9 +122,10 @@ export default function CreateActivity() {
                     <option value={5}>5</option>
                     </select>
                 </div>
+                <br></br>
 
                 <div>
-                    <label>Duration:</label>
+                    <label className="formtittles">Duration:</label>
                     <input  
                     type = 'string' 
                     value = {input.duration} 
@@ -125,9 +133,10 @@ export default function CreateActivity() {
                     onChange={hadleChange}
                     ></input>
                 </div>
+                <br></br>
 
                 <div>
-                    <label>Season:</label>
+                    <label className="formtittles">Season:</label>
                     <select onChange={(ev) => hadleSeason(ev)}>
                     <option value ='Summer'>Summer</option>
                     <option value ='Winter'>Winter</option>
@@ -136,24 +145,53 @@ export default function CreateActivity() {
                     <option value='All'>All Year</option>
                     </select>
                 </div>
+                <br></br>
 
-                <label>Countrie:
+                <label className="formtittles">Countrie:
                     <select onChange={(e) => hadleSelect(e)}>
                     {countries.map((e)=>(
                         <option value ={e.id} >{e.name} </option>
                     ))}
                 </select>
                 </label>
+               
                 <div>       
+                <br></br>
                 <button type="submit">Submit</button>
                 </div> 
             </form>
-
+            </div>
+          
+                        <div className="DeleteCountries">
             {input.countries.map(el=>
                 <div>
                     <h6>{el}</h6>
-                    <button onClick={()=> hadleDelete(el)}>X</button>
+                    <button onClick={()=> hadleDelete(el)}>Remove</button>
                 </div>)}
+                        </div>
         </div>
+        
     )
 }
+
+
+// {/* <div class="form">
+// <div class="title">Welcome</div>
+// <div class="subtitle">Let's create your activity!</div>
+// <div class="input-container ic1">
+//   <input id="firstname" class="input" type="text" placeholder=" " />
+//   <div class="cut"></div>
+//   <label for="firstname" class="placeholder">First name</label>
+// </div>
+// <div class="input-container ic2">
+//   <input id="lastname" class="input" type="text" placeholder=" " />
+//   <div class="cut"></div>
+//   <label for="lastname" class="placeholder">Last name</label>
+// </div>
+// <div class="input-container ic2">
+//   <input id="email" class="input" type="text" placeholder=" " />
+//   <div class="cut cut-short"></div>
+//   <label for="email" class="placeholder">Email</>
+// </div>
+// <button type="text" class="submit">submit</button>
+// </div> */}

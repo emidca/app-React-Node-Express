@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearch } from "../actions";
+import "./Css-components/SearchBar.css"
 
 export default function SearchBar() {
     const dispatch = useDispatch()
@@ -18,8 +19,9 @@ export default function SearchBar() {
 
     return(
         <div>
-            <input type="text" placeholder="Search..." onChange={(e)=> hadleInputChange(e)}/>
-            <button type="submit" onClick={(e) => hadleSubmit(e)}>Search</button>
+            <input className="input" type="text" placeholder="Type here ..." onChange={(e)=> hadleInputChange(e)}/>
+            <button className="searchbutton" type="submit" onClick={(e) => hadleSubmit(e)}>Search</button>
         </div>
     )
 }
+

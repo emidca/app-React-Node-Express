@@ -1,0 +1,21 @@
+.detailscontainer {
+    border: solid rgb(18, 156, 122) 5px;
+    color: white;
+    margin-right: 80vh;
+    margin-left: 80vh;
+    height: 50vh;
+    border-radius: 10px;
+    
+}
+
+.detailactivities {
+    color:rgb(49, 190, 21);
+    border: solid green 5px;
+    border-radius: 10px;
+    margin: -75px;
+    margin-top: 50px;
+    padding: 40;
+    width: 50vh;
+
+    
+}

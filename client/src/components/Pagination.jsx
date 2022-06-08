@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Css-components/Pagination.css"
 
 export default function Pagination({countries,pagination,countriesPerPage}) {
 
@@ -9,7 +10,7 @@ export default function Pagination({countries,pagination,countriesPerPage}) {
     }
 
     return( 
-        <div>
+        <div className="pagination">
             {
                 PageNumber && PageNumber.map(n => {return (
                     <button onClick={()=>pagination(n)} key={n}>{n}</button>    

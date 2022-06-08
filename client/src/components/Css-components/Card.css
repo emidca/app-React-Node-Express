@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     height: 75vh;
-    border: red solid 1px;
+    width: 120vh;
     margin: 20px;
     justify-content: space-around;
 
@@ -15,24 +15,6 @@
 }
 
 
-.nav {
-    display: flex;
-    justify-content: space-around;
-    height: 80px;
-    background-color: rgb(11, 6, 29);
-    border-radius: 5px;
-    
-    
-
-}
-
-.nav h1 {
-    margin: 0 auto;
-    color: rgb(245, 245, 245);
-    margin-top: 20px;
-    
-
-}
 
 /* From uiverse.io by @alexroumi */
 .reloadCountries {
@@ -91,10 +73,12 @@
     display: flex;
     float: left;
     margin-top: 80px;
-    margin-left: 8vw;
+    margin-left: 20px;
+    margin-right: 40px;
     flex-direction: column;
     align-items: center;
-    border: 1px solid red;
+   
+   
 
 }
 
@@ -175,10 +159,7 @@
    }
 
 
-   .maincontainer {
-       border: green solid 1px;
-      height: 88vh;
-   }
+  
 
    .linkcard {
     text-decoration: none;
@@ -189,3 +170,27 @@
       height: 100px;
   }
 
+
+
+
+.detailscontainer {
+    padding: 5px;
+    
+
+}
+
+/* H3 DE LOS FILTRADOS */
+
+.h3filtrados {
+    color: white;
+    text-shadow: 4px 4px 5px black;
+}
+
+
+.tittlemain {
+    color: white;
+    font-size: 30px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    font: small-caps serif;
+}

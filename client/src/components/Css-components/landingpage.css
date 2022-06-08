@@ -1,0 +1,68 @@
+.LandingPage {
+    
+        margin: -1.2%;
+        background-image: url(https://images.unsplash.com/photo-1584967918940-a7d51b064268?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        height: 120vh;
+        width: 200vh;
+        
+
+    }
+
+    .LandingPage h1 {
+        padding-top: 400px;
+        text-shadow: 2px 2px #23c483;
+        
+        
+    }
+
+
+    .tittleactivitie {
+        color: white;
+    }
+
+
+    .DeleteCountries{
+        color: white;
+        display: flex;
+flex-direction: row;
+justify-content: space-around;
+justify-content: center;
+align-items: center;
+
+    }
+
+    .formactivity {
+        border-radius: 70px;
+        margin: 100px;
+    }
+
+
+    .LandingPage button {
+        padding: 1.3em 3em;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+      }
+      
+      .LandingPage button:hover {
+        background-color: #23c483;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+      }
+      
+      .LandingPage button:active {
+        transform: translateY(-1px);
+      }

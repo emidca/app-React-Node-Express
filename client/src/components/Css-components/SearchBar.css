@@ -1,0 +1,40 @@
+.input {
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #e8e8e8;
+    box-shadow: 1px 1px 6px #ffffff,
+                -2px -2px 5px #c5c5c5;
+    font-size: medium;
+    font-weight: bold;
+    max-width: 200px;
+    height: 1px;
+    margin-top: 10px;
+    margin-right: 5px;
+   }
+   
+   .input:focus {
+    outline-color: white;
+    place-content: "Enter your message!";
+   }
+
+   .searchbutton {
+    color: #090909;
+    padding: 4px;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    transition: all .3s;
+    box-shadow: 1px 1px 6px #ffffff,
+    -2px -2px 5px #c5c5c5;
+    cursor: pointer;
+               
+   }
+   
+   button:active {
+    color: #666;
+    box-shadow: inset 4px 4px 12px #c5c5c5,
+                inset -4px -4px 12px #ffffff;
+               
+   }

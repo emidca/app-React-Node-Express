@@ -6,6 +6,8 @@ import Card from "./Card";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
 import "./Css-components/Card.css"
+import "./Css-components/NavBar.css"
+import "./Css-components/Home.css"
 
 export default function Home (){
     const dispatch = useDispatch();                                   // ejecuto dispatch en una variable
@@ -68,18 +70,27 @@ export default function Home (){
                     </button>
                     </div>
                 <div>
-                    <h1>COUNTRIES PAGE</h1>
+                    <h1 className="tittlemain">COUNTRIES PAGE</h1>
                 </div>
+                
                 <div>
                 <button className="reloadCountries" onClick={e=>{handleClick(e)}}>Reload Countries</button>
                 </div>
             </nav>
 
             <SearchBar/>
+            <br></br>
+            <Pagination
+            countries = {countries.length}
+            countriesPerPage={countriesPerPage}
+            pagination={pagination}
+            />
+            <br></br>
 <div className="maincontainer">
             <div className="filtrados">
                 <div>
-                 <select onChange={e => handleFilterByContinent(e)}>
+                <h3 className="h3filtrados">Order by Continent</h3>
+                 <select className="select-css" onChange={e => handleFilterByContinent(e)}>
                  <option value ='All'>All</option>
                  <option value='Americas'>Americas</option>
                  <option value='Africa'>Africa</option>
@@ -89,15 +100,19 @@ export default function Home (){
                  <option value='Oceania'>Oceania</option>
                  </select>
                  </div>
+               
 
                 <div>
-                 <select onChange ={(e) => handleFiltradoPoblacion(e)}>
-                    <option value ='asc'>Mayor Poblacion</option>
-                    <option value ='desc'>Menor Poblacion</option>
+                     <h3 className="h3filtrados">Order by population</h3>
+                 <select className="select-css" onChange ={(e) => handleFiltradoPoblacion(e)}>
+                    <option value ='asc'>Higher population</option>
+                    <option value ='desc'>Lower population</option>
                     </select>
                     </div>
+                
                 <div>   
-                 <select onChange={e => handleAlfa(e)}>
+                <h3 className="h3filtrados">Order Alphabetically</h3>
+                 <select className="select-css" onChange={e => handleAlfa(e)}>
                      <option value="asc">Ascending</option>
                      <option value="desc">Descending</option>
                  </select>
@@ -108,14 +123,16 @@ export default function Home (){
                 
 
 
-        {(activities.length === 0)? <p>Create activities to filter</p>
-          : <select onChange = {e => hadleActivities(e)}>
+        {<div>
+              <h3 className="h3filtrados">Select an activity</h3>
+          <select className="select-css"  onChange = {e => hadleActivities(e)}>
           <option value = 'All'>Select activity</option>
           {activities.map((e)=>(
             <option value = {e.name} key={e.id}> {e.name} </option>
             ))
           }
           </select>
+          </div>
         }
                 </div>
           </div>
@@ -128,14 +145,14 @@ export default function Home (){
              <Card key={c.id} name={c.name} continents={c.continents} flags={c.flags}/>
                         </Link>
                  </div>
-            )}): <h1>error 404</h1>}
+            )}): <svg viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50"></circle>
+          </svg>
+          
+          }
             </div>
             
-            <Pagination
-            countries = {countries.length}
-            countriesPerPage={countriesPerPage}
-            pagination={pagination}
-            />
+        
 
             </div> 
     

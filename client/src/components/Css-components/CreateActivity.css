@@ -1,0 +1,16 @@
+
+
+.formactivity{
+    background-color: rgb(7, 42, 73);
+    border: 1px rgb(30, 141, 54) solid;
+    word-spacing: normal;
+    margin-left: 78vh;
+    width: 400px;
+    height: 400px;
+    
+}
+
+.formtittles {
+    color: white;
+    text-align-last: right;
+}
